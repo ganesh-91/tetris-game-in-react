@@ -31,7 +31,6 @@ class GameViewWrapper extends Component {
       "orange",
       "pink"
     ]
-    // this.update = this.update.bind(this);
   };
 
   render() {
@@ -42,11 +41,63 @@ class GameViewWrapper extends Component {
         </div>
         <canvas ref="canvas" width={240} height={400} />
         <div>
+          <div>
+            <div className="display-inline-block">
+              <div >
+                <button onClick={() => {
+                  this.playerMove(-1);
+                }} className="button button-circle right">
+                  &#8592;
+                </button>
+                <button onClick={() => {
+                  this.playerMove(+1);
+                }} className="button button-circle left">
+                  &#8594;
+                </button>
+              </div>
+              <div >
+                <button onClick={() => {
+                  this.playerDrop();
+                }} className="button button-circle down">
+                  &#8595;
+                </button>
+              </div>
+            </div>
+            <div className="display-inline-block margin-left-10">
+              <div >
+                <div className="display-inline-block">
+                  <button onClick={() => {
+                    this.setState({ pause: !this.state.pause }, () => {
+                      if (!this.state.pause) {
+                        this.update();
+                      }
+                    })
+                  }} className="button button-circle pause">
+                    P
+                  </button>
+                </div>
+                <div className="display-inline-block">
+                  <button onClick={() => {
+                    this.resetPlayer();
+                  }} className="button button-circle pause">
+                    R
+                  </button>
+                </div>
+              </div>
+              <div >
+                <button onClick={() => {
+                  this.playerRotate(1);
+                }} className="button button-circle padding-30">
+
+                </button>
+              </div>
+            </div>
+          </div>
           <p>Use &#8592;,&#8594;,&#8595; keys for movement.</p>
           <p> q, w for piece rotation.</p>
-          <p>p for pausing the game.</p>
+          <p>p for pausing the game and r for restart.</p>
         </div>
-      </div>
+      </div >
     );
   }
 
@@ -68,6 +119,9 @@ class GameViewWrapper extends Component {
         case 87:
           this.playerRotate(1);
           break;
+        case 82:
+          this.resetPlayer();
+          break;
         default:
           break;
       }
@@ -82,15 +136,6 @@ class GameViewWrapper extends Component {
   }
 
   componentWillMount() {
-    // document.addEventListener("keydown", (e) => {
-    //   if (!keydown) {
-    //     keydown = true;
-    //     this._handleKeyDown(e);
-    //   }
-    //   window.addEventListener('keyup', function () {
-    //     keydown = false;
-    //   });
-    // });
     document.addEventListener("keydown", (e) => {
       this._handleKeyDown(e);
     });
