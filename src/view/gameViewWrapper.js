@@ -45,19 +45,25 @@ class GameViewWrapper extends Component {
             <div className="display-inline-block">
               <div >
                 <button onClick={() => {
-                  this.playerMove(-1);
+                  if (!this.state.pause) {
+                    this.playerMove(-1);
+                  }
                 }} className="button button-circle right">
                   &#8592;
                 </button>
                 <button onClick={() => {
-                  this.playerMove(+1);
+                  if (!this.state.pause) {
+                    this.playerMove(+1);
+                  }
                 }} className="button button-circle left">
                   &#8594;
                 </button>
               </div>
               <div >
                 <button onClick={() => {
-                  this.playerDrop();
+                  if (!this.state.pause) {
+                    this.playerDrop();
+                  }
                 }} className="button button-circle down">
                   &#8595;
                 </button>
@@ -86,7 +92,9 @@ class GameViewWrapper extends Component {
               </div>
               <div >
                 <button onClick={() => {
-                  this.playerRotate(1);
+                  if (!this.state.pause) {
+                    this.playerRotate(1);
+                  }
                 }} className="button button-circle padding-30">
 
                 </button>
