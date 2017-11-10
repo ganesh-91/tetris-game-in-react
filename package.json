@@ -2,7 +2,7 @@
   "name": "tetris-game-in-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://myname.github.io/tetris-game",
+  "homepage": "https://ganesh-91.github.io/tetris-game-in-react",
   "dependencies": {
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
